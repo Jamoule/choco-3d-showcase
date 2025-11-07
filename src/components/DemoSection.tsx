@@ -1,5 +1,5 @@
 import { Box, Button, Chip, CircularProgress, Container, Fade, Paper, Stack, Typography } from "@mui/material";
-import { keyframes } from "@mui/system";
+import { keyframes } from "@mui/material/styles";
 import { useEffect, useRef, useState } from "react";
 
 type ModelViewerElement = HTMLElement & {
