@@ -1,42 +1,62 @@
-import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { Box, Button, Container, Divider, Stack, Typography } from "@mui/material";
 
 const AboutSection = () => {
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-cacao-light via-cacao to-cacao-light">
-      <div className="container mx-auto max-w-4xl text-center">
-        <div className="mb-8">
-          <h2 className="font-playfair text-5xl md:text-6xl font-bold text-primary mb-4 animate-fade-in">
-            Kebweb
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-8" />
-        </div>
+    <Box
+      component="section"
+      sx={{
+        py: { xs: 10, md: 14 },
+        px: 2,
+        background: "linear-gradient(135deg, rgba(214,161,93,0.15) 0%, rgba(20,10,6,0.95) 100%)",
+      }}
+    >
+      <Container maxWidth="md">
+        <Stack spacing={4} textAlign="center" alignItems="center">
+          <Box>
+            <Typography variant="h2" sx={{ fontSize: { xs: "3rem", md: "4rem" }, color: "primary.main" }}>
+              Kebweb
+            </Typography>
+            <Box sx={{ width: 120, height: 4, bgcolor: "primary.main", mx: "auto", mt: 2 }} />
+          </Box>
 
-        <div className="space-y-6 mb-10 text-lg text-cream-dark animate-fade-in [animation-delay:200ms]">
-          <p className="leading-relaxed">
-            Nous créons des expériences numériques sur mesure pour les marques qui veulent marquer les esprits.
-          </p>
-          <p className="leading-relaxed">
-            Sites web, outils de gestion, prototypes 3D — notre seule limite, c'est votre imagination.
-          </p>
-        </div>
+          <Stack spacing={2} sx={{ color: "text.secondary", fontSize: "1.1rem" }}>
+            <Typography>
+              Nous créons des expériences numériques sur mesure pour les marques qui veulent marquer les esprits.
+            </Typography>
+            <Typography>
+              Sites web, outils de gestion, prototypes 3D — notre seule limite, c'est votre imagination.
+            </Typography>
+          </Stack>
 
-        <Button
-          size="lg"
-          className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in [animation-delay:400ms] group"
-          onClick={() => window.location.href = "mailto:contact@kebweb.com"}
-        >
-          <Mail className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-          Parlons de votre projet
-        </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            startIcon={<MailOutlineIcon />}
+            onClick={() => (window.location.href = "mailto:contact@kebweb.com")}
+            sx={{
+              px: 6,
+              py: 2.5,
+              fontSize: "1.1rem",
+              boxShadow: "0 20px 60px rgba(214,161,93,0.35)",
+              transition: "transform 300ms ease, box-shadow 300ms ease",
+              '&:hover': {
+                transform: "translateY(-3px)",
+                boxShadow: "0 30px 80px rgba(214,161,93,0.5)",
+              },
+            }}
+          >
+            Parlons de votre projet
+          </Button>
 
-        <div className="mt-16 pt-8 border-t border-border">
-          <p className="text-muted-foreground text-sm">
+          <Divider flexItem sx={{ width: "100%", borderColor: "rgba(214,161,93,0.3)", mt: 6 }} />
+          <Typography variant="body2" color="text.secondary">
             © 2025 Kebweb. Tous droits réservés.
-          </p>
-        </div>
-      </div>
-    </section>
+          </Typography>
+        </Stack>
+      </Container>
+    </Box>
   );
 };
 

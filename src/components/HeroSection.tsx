@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Box, Button, Container, Typography } from "@mui/material";
 
 interface HeroSectionProps {
   onScrollToDemo: () => void;
@@ -7,35 +7,84 @@ interface HeroSectionProps {
 
 const HeroSection = ({ onScrollToDemo }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cacao via-cacao-light to-cacao" />
-      
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px]" />
+    <Box
+      component="section"
+      sx={{
+        position: "relative",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        background: "radial-gradient(circle at 20% 20%, rgba(214,161,93,0.25), transparent 55%), linear-gradient(135deg, #210f07 0%, #3b2313 50%, #210f07 100%)",
+      }}
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.15,
+          backgroundImage:
+            "radial-gradient(circle at 25px 25px, rgba(255,255,255,0.3) 1px, transparent 0)",
+          backgroundSize: "50px 50px",
+        }}
+      />
 
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <h1 className="font-playfair text-5xl md:text-7xl font-bold text-cream mb-6 animate-fade-in">
+      <Container maxWidth="md" sx={{ position: "relative", textAlign: "center", zIndex: 1 }}>
+        <Typography variant="h1" sx={{ fontSize: { xs: "2.75rem", md: "4.5rem" }, mb: 3, color: "text.primary" }}>
           Faites goûter votre chocolat en 3D.
-        </h1>
-        
-        <p className="text-xl md:text-2xl text-cream-dark mb-10 max-w-3xl mx-auto animate-fade-in [animation-delay:200ms]">
+        </Typography>
+
+        <Typography
+          variant="h5"
+          sx={{
+            mb: 5,
+            color: "text.secondary",
+            maxWidth: { md: "720px" },
+            mx: "auto",
+            fontWeight: 400,
+          }}
+        >
           Tablettes interactives, emballages animés, et expériences e-commerce immersives.
-        </p>
-        
-        <Button 
+        </Typography>
+
+        <Button
+          size="large"
+          variant="contained"
+          color="primary"
           onClick={onScrollToDemo}
-          size="lg"
-          className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in [animation-delay:400ms]"
+          sx={{
+            px: 6,
+            py: 2.5,
+            fontSize: "1.1rem",
+            boxShadow: "0 20px 60px rgba(214,161,93,0.35)",
+            transition: "transform 300ms ease, box-shadow 300ms ease",
+            '&:hover': {
+              transform: "translateY(-4px)",
+              boxShadow: "0 30px 80px rgba(214,161,93,0.45)",
+            },
+          }}
         >
           Voir la tablette en 3D
         </Button>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-8 h-8 text-cream-dark" />
-        </div>
-      </div>
-    </section>
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: { xs: 24, md: 40 },
+            left: "50%",
+            transform: "translate(-50%, 0)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            animation: "bounce 2.5s infinite",
+            color: "text.secondary",
+          }}
+        >
+          <KeyboardArrowDownIcon fontSize="large" />
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
