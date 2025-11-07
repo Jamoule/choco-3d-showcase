@@ -1,8 +1,9 @@
+import { Box } from "@mui/material";
 import { useRef } from "react";
-import HeroSection from "@/components/HeroSection";
-import DemoSection from "@/components/DemoSection";
-import BenefitsSection from "@/components/BenefitsSection";
 import AboutSection from "@/components/AboutSection";
+import BenefitsSection from "@/components/BenefitsSection";
+import DemoSection from "@/components/DemoSection";
+import HeroSection from "@/components/HeroSection";
 
 const Index = () => {
   const demoRef = useRef<HTMLDivElement>(null);
@@ -12,14 +13,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <Box component="main" sx={{ minHeight: "100vh", bgcolor: "transparent" }}>
       <HeroSection onScrollToDemo={scrollToDemo} />
-      <div ref={demoRef}>
+      <Box ref={demoRef}>
         <DemoSection />
-      </div>
+      </Box>
       <BenefitsSection />
       <AboutSection />
-    </div>
+    </Box>
   );
 };
 
